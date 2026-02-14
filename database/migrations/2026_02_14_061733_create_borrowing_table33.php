@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('borrowings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id');
+            $table->date('borrow_date');
+            $table->date('return_date');
+            $table->enum('status', ['borrowed', 'returned'])->default('borrowed');
             $table->timestamps();
         });
     }
